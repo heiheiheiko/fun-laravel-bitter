@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'api'], function () {
+    Route::group(['prefix' => 'v1'], function () {
+        Route::group(['prefix' => 'posts'], function () {
+            Route::get('/', [PostController::class, 'index']);
+        });
+    });
 });
