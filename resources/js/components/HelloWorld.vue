@@ -1,5 +1,5 @@
 <template>
-    <h1>{{ greeting }}</h1>
+    <h1 class="text-green-500">{{ greeting }}</h1>
 </template>
 <script>
 export default {
