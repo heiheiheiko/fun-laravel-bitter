@@ -11,15 +11,15 @@ const mix = require('laravel-mix');
  |
  */
 
- mix.js('resources/js/app.ts', 'public/js')
-    .vue()
-    .postCss('resources/css/app.css', 'public/css', [
-        require('tailwindcss'),
-    ]);
+mix.ts('resources/js/app.ts', 'public/js')
+  .vue()
+  .postCss('resources/css/app.css', 'public/css', [
+    require('tailwindcss'),
+  ]);
 
 mix.options({
-    hmrOptions: {
-        host: 'localhost',
-        port: 8080,
-    }
+  hmrOptions: {
+    host: 'localhost',
+    port: 8080,
+  },
 });
