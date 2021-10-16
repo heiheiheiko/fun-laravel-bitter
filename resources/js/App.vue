@@ -2,12 +2,24 @@
   <HelloWorld></HelloWorld>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import usePost from './composables/usePost';
+import useState from './composables/useState';
 
 export default defineComponent({
   name: 'App',
-  components: [HelloWorld],
+  setup() {
+    const { fetchPosts } = usePost();
+    const { computedState } = useState();
+
+    return {
+      fetchPosts,
+      computedState,
+    };
+  },
+  created() {
+    this.fetchPosts();
+  },
 });
 </script>
