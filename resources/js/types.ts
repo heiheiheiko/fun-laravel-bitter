@@ -19,3 +19,11 @@ export interface Post {
   created_at: string,
   updated_at: string,
 }
+
+export interface Dimension {
+  tiny: string,
+  small: string,
+  normal: string,
+  large: string,
+  huge: string,
+}
