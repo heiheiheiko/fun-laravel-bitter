@@ -1,9 +1,14 @@
 import { createApp } from 'vue';
 import upperFirst from 'lodash/upperFirst';
 import camelCase from 'lodash/camelCase';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSkull } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
 
 const app = createApp(App);
+
+library.add(faSkull);
 
 const requireComponent = require.context(
   './components',
@@ -20,6 +25,8 @@ requireComponent.keys().forEach((fileName) => {
 
   app.component(componentName, componentConfig.default || componentConfig);
 });
+
+app.component('FontAwesomeIcon', FontAwesomeIcon);
 
 app.mount('#app');
 

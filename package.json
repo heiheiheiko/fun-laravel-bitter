@@ -11,6 +11,9 @@
     "watch-poll": "mix watch -- --watch-options-poll=1000"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^3.0.0-4",
     "autoprefixer": "^10.3.7",
     "axios": "^0.23.0",
     "normalizr": "^3.6.1",
