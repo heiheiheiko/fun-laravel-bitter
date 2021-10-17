@@ -4,23 +4,48 @@
     <textarea
       id="messgae"
       name="message"
+      v-model="v$.message.$model"
       rows="3"
       class="w-1/2 shadow-sm block focus:ring-gray-500 focus:border-gray-500 sm:text-sm
         border border-gray-300 rounded-md"></textarea>
 
-    <p class="my-2 text-sm text-gray-500">
+    <ul class="mt-2 text-sm" v-for="error of v$.message.$errors" :key="error.$uid">
+      <li class="text-red-500">{{ error.$message }}</li>
+    </ul>
+
+    <p class="my-2  text-gray-500">
       Write a terrifying message or tell the world your evil plans!
     </p>
 
-    <BaseButton >terrify!</BaseButton>
+    <BaseButton
+      color="red"
+      :is-disabled="v$.$invalid">terrify!
+    </BaseButton>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { required, minLength, maxLength } from '@vuelidate/validators';
 import BaseButton from './BaseButton.vue';
 
 export default defineComponent({
   components: { BaseButton },
+  setup() {
+    const state = reactive({
+      message: '',
+    });
+    const rules = {
+      message: {
+        required,
+        minLength: minLength(12),
+        maxLength: maxLength(255),
+      },
+    };
+    const v$ = useVuelidate(rules, state);
+
+    return { state, v$ };
+  },
 });
 </script>
