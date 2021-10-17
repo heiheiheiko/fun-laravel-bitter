@@ -1,6 +1,6 @@
 <template>
   <TheLayout>
-    <PageHeader> Posts </PageHeader>
+    <PageHeader> {{ $t('views.PostIndex.title') }} </PageHeader>
     <PostForm class="mb-8"></PostForm>
     <PostGrid></PostGrid>
   </TheLayout>
@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
 import PostGrid from '../components/PostGrid.vue';
 import TheLayout from '../components/TheLayout.vue';
 import PageHeader from '../components/PageHeader.vue';
@@ -20,9 +21,13 @@ export default defineComponent({
   },
   setup() {
     const { fetchPosts } = usePost();
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: 'local',
+    });
 
     return {
-      fetchPosts,
+      fetchPosts, t,
     };
   },
   created() {
@@ -30,3 +35,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<i18n>
+{
+  "en": {
+    "pageTitle": "Terrefieng posts"
+  },
+}
+</i18n>

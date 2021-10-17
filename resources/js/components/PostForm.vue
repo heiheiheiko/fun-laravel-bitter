@@ -14,13 +14,14 @@
     </ul>
 
     <p class="my-2  text-gray-500">
-      Write a terrifying message or tell the world your evil plans!
+      {{ $t('forms.PostForm.fields.message.hint')}}
     </p>
 
     <BaseButton
       @click="onSubmit"
       color="red"
-      :is-disabled="v$.$invalid">terrify!
+      :is-disabled="v$.$invalid">
+      {{ $t('forms.PostForm.submit')}}
     </BaseButton>
   </div>
 </template>

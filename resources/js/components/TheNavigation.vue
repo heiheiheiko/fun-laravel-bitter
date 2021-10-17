@@ -16,7 +16,7 @@
               href="#"
               class="text-base font-medium"
               key="Posts">
-              Posts
+              {{ $t('views.PostIndex.title')}}
             </a>
           </div>
         </div>

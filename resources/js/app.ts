@@ -5,8 +5,9 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSkull } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
+import i18n from './i18n';
 
-const app = createApp(App);
+const app = createApp(App).use(i18n);
 
 library.add(faSkull);
 
