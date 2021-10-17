@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mx-auto rounded-lg shadow-lg overflow-hidden w-1/2">
+  <div class="flex flex-col mx-auto rounded-lg shadow-lg overflow-hidden w-full md:w-1/2">
     <div class="flex-1 bg-gray-700 p-6">
       <div class="flex-1">
         <p class="text-base text-gray-200">

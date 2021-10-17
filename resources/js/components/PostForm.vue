@@ -6,7 +6,7 @@
       name="message"
       v-model="v$.message.$model"
       rows="3"
-      class="w-1/2 shadow-sm block focus:ring-gray-500 focus:border-gray-500 sm:text-sm
+      class="w-full md:w-1/2 shadow-sm block focus:ring-gray-500 focus:border-gray-500 sm:text-sm
         border border-gray-300 rounded-md"></textarea>
 
     <ul class="mt-2 text-sm" v-for="error of v$.message.$errors" :key="error.$uid">
