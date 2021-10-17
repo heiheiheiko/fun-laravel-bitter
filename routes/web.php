@@ -22,6 +22,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::group(['prefix' => 'v1'], function () {
         Route::group(['prefix' => 'posts'], function () {
             Route::get('/', [PostController::class, 'index']);
+            Route::post('/', [PostController::class, 'create']);
         });
     });
 });
