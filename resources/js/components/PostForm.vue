@@ -18,6 +18,7 @@
     </p>
 
     <BaseButton
+      @click="onSubmit"
       color="red"
       :is-disabled="v$.$invalid">terrify!
     </BaseButton>
@@ -29,10 +30,13 @@ import { defineComponent, reactive } from 'vue';
 import useVuelidate from '@vuelidate/core';
 import { required, minLength, maxLength } from '@vuelidate/validators';
 import BaseButton from './BaseButton.vue';
+import usePost from '../composables/usePost';
 
 export default defineComponent({
   components: { BaseButton },
   setup() {
+    const { createPost } = usePost();
+
     const state = reactive({
       message: '',
     });
@@ -45,7 +49,11 @@ export default defineComponent({
     };
     const v$ = useVuelidate(rules, state);
 
-    return { state, v$ };
+    const onSubmit = () => {
+      createPost(state.message);
+    };
+
+    return { state, v$, onSubmit };
   },
 });
 </script>

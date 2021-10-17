@@ -1,5 +1,6 @@
 import { computed } from 'vue';
 import { schema } from 'normalizr';
+import { orderBy } from 'lodash';
 import axios from '../axios';
 import useState from './useState';
 import useUser from './useUser';
@@ -19,7 +20,7 @@ const postSchema = new schema.Entity(resourceName, {
 });
 
 // computed
-const posts = computed(() => allResources(resourceName));
+const posts = computed(() => orderBy(allResources(resourceName), 'created_at', 'desc'));
 
 export default function usePost() {
   // methods
@@ -28,9 +29,15 @@ export default function usePost() {
       normalizeAndAssignData(response.data as Post[], [postSchema]);
     });
 
+  const createPost = (message: string) => axios.post(resourceUrl, { message })
+    .then((response: BackendResponse) => {
+      normalizeAndAssignData(response.data as Post[], postSchema);
+    });
+
   return {
     posts,
     postSchema,
     fetchPosts,
+    createPost,
   };
 }
