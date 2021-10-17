@@ -3,6 +3,11 @@
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="true"
 >
     <testsuites>
         <testsuite name="Unit">
@@ -10,6 +15,9 @@
         </testsuite>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory suffix="Test.php">./tests/Integration</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
@@ -19,6 +27,7 @@
     </coverage>
     <php>
         <server name="APP_ENV" value="testing"/>
+        <env name="DB_DATABASE" value="bitter_test"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
         <!-- <server name="DB_CONNECTION" value="sqlite"/> -->
