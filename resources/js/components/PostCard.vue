@@ -44,6 +44,7 @@ export default defineComponent({
     const user = computed(() => findUser(props.post.user));
     const postedAtInWords = computed(() => moment(props.post.created_at).fromNow());
     const avatarLetters = computed(() => {
+      if (!user.value.name) { return ''; }
       const splittedName = user.value.name.split(' ');
       if (splittedName.length === 1) { return splittedName[0][0]; }
       return splittedName[0][0] + splittedName[1][0];
